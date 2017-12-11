@@ -1,0 +1,44 @@
+
+<ol class="breadcrumb">
+  <li><a title="Accueil" routerLink="/" routerLinkActive="active">Accueil</a></li>
+  <li><a title="INgredients" routerLink="/ingredients" routerLinkActive="active">Ingredients</a></li>
+  <li class="active"><a title="{{title_form}}">{{title_form}}</a></li>
+</ol>
+
+
+<h1 class="text-center">{{title_form}} un Ingredient</h1>
+
+<ng-container *ngIf="result">
+  <div class="alert alert-dismissable" [ngClass]="{
+        'alert-success': result.success,
+        'alert-danger': !result.success
+      }" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{result.message}}
+  </div>
+</ng-container>
+
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <input *ngIf="id_to_update" type="hidden" formControlName="id_to_update" />
+    <p>
+      <label>Name:</label>
+      <input type="text" formControlName="name" class="form-control">
+    </p>
+    <p>
+      <label>Description:</label>
+      <input type="text" formControlName="description" class="form-control">
+    </p>
+    <p>
+      <label>Price</label>
+      <input type="number" formControlName="price" class="form-control">
+    </p>
+    <p>
+      <label>Weight</label>
+      <input type="text" formControlName="weight" class="form-control">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </p>
+
+  </form>

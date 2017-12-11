@@ -1,0 +1,60 @@
+<ol class="breadcrumb">
+  <li><a title="Accueil" routerLink="/" routerLinkActive="active">Accueil</a></li>
+  <li><a title="Ingredients" routerLink="/ingredients" routerLinkActive="active">Ingredients</a></li>
+  <li class="pull-right">
+    <a class="btn btn-success btn-xs" title="Ingredients" routerLink="/ingredients/add" routerLinkActive="active"><i class="fa fa-plus"></i> Ajouter</a>
+  </li>
+
+</ol>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <ng-container *ngIf="result">
+      <div class="alert alert-dismissable" [ngClass]="{
+        'alert-success': result.success,
+        'alert-danger': !result.success
+      }" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{result.message}}
+      </div>
+    </ng-container>
+
+
+    <div class="row" *ngIf="listIngredient && listIngredient.length > 0;else empty_ingredients">
+      <!-- Card Projects -->
+      <div *ngFor="let ingredient of listIngredient; let i = index" class="col-md-3" >
+        <div class="card">
+          <div class="card-title">
+            <h3 class="text-center">{{ingredient.name}}</h3>
+          </div>
+          <div class="card-content">
+
+            <p><b>Description : </b>
+              <br/>{{ingredient.description}}
+            </p>
+            <p><b>Prix : </b>{{ingredient.price}} €</p>
+            <p><b>Poids : </b>{{ingredient.weight}}</p>
+          </div>
+
+          <div class="card-action text-center">
+            <a class="text-info" routerLink="{{ingredient._id}}"></a>
+            <a routerLink="update/{{ingredient._id}}"><i class="fa fa-cog"></i></a>
+            <a class="text-danger"  (click)="deleteIngredient(ingredient)"><i class="fa fa-trash"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ng-template #empty_ingredients>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <p><i>Il n'y a actuellement aucun ingredient enregistrée...</i></p>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+

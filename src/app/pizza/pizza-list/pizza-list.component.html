@@ -1,0 +1,60 @@
+<ol class="breadcrumb">
+  <li><a title="Accueil" routerLink="/" routerLinkActive="active">Accueil</a></li>
+  <li><a title="Pizzas" routerLink="/pizzas" routerLinkActive="active">Pizzas</a></li>
+  <li class="pull-right">
+    <a class="btn btn-xs" title="Pizzas" routerLink="/pizzas/add" routerLinkActive="active"><i class="fa fa-plus"></i> Ajouter</a>
+  </li>
+</ol>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center">
+      Pizzas disponibles actuellement
+    </h1>
+
+    <div class="row" *ngIf="listPizza && listPizza.length > 0;else empty_pizzas">
+      <!-- Card Projects -->
+      <div *ngFor="let pizza of listPizza" class="col-md-6 col-md-offset-3" >
+        <div class="card">
+          <div class="card-image">
+            <img class="img-responsive" src="data:image/png;base64,{{pizza.img}}">
+            <span class="card-title">{{pizza.name}}</span>
+          </div>
+
+          <div class="card-content">
+            <div class="row">
+              <div class="col-md-6">
+                <p>{{pizza.description}}</p>
+                <p><b>{{pizza.price}} €</b></p>
+              </div>
+              <div class="col-md-6">
+                <ul *ngIf="pizza.ingredients && pizza.ingredients.length > 0">
+                  <li *ngFor="let ingredient of pizza.ingredients">{{ingredient.name}}</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="card-action text-center">
+            <button type="button" class="btn btn-info" routerLink="{{pizza._id}}">Detail</button>
+            <button type="button" class="btn btn-success" routerLink="update/{{pizza._id}}">Modifier</button>
+            <button type="button" class="btn btn-danger" (click)="deletePizza(pizza._id)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a title="Pizzas" routerLink="/pizzas/add" routerLinkActive="active"><i class="fa fa-plus-circle"> Ajoute une pizza</i></a>
+
+    <ng-template #empty_pizzas>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <p><i>Il n'y a actuellement aucune pizza enregistrée...</i></p>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <li role="presentation" class="dropdown" routerLinkActive="active">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Pizzas <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/pizzas" routerLinkActive="active"><i class="fa fa-list-alt"></i> Liste</a></li>
+            <li><a routerLink="/pizzas/add" routerLinkActive="active"><i class="fa fa-plus"></i> Ajouter</a></li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="dropdown" routerLinkActive="active">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Ingredients <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/ingredients" routerLinkActive="active"><i class="fa fa-list-alt"></i> Liste</a></li>
+            <li><a routerLink="/ingredients/add" routerLinkActive="active"><i class="fa fa-plus"></i> Ajouter</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container marginTop65">
+  <router-outlet></router-outlet>
+</div>
+

@@ -1,0 +1,31 @@
+
+<ol class="breadcrumb">
+  <li><a title="Accueil" routerLink="/" routerLinkActive="active">Accueil</a></li>
+  <li><a title="Pizzas" routerLink="/pizzas" routerLinkActive="active">Pizzas</a></li>
+  <li><a title="Ajouter" class="active">Fiche</a></li>
+</ol>
+
+<div *ngIf="selectedPizza;else loading" class="row">
+  <div class="col-md-12">
+
+    <h1 class="text-center">{{ selectedPizza.name }}</h1>
+
+    <p>
+      <b>Nom :</b> {{ selectedPizza.name }}
+      <br/><b>Description: </b> {{ selectedPizza.description }}
+      <br/><b>Prix: </b> {{ selectedPizza.price }} €
+      <br/><b>Date d'ajout: </b> {{ selectedPizza.created_at }}
+      <br/>
+      <br/><b>Apparence: </b> <img src="data:image/png;base64,{{selectedPizza.img}}">
+
+    </p>
+
+    <p><b>Ingredients</b></p>
+
+    <span class="btn btn-primary" *ngFor="let ingredient of selectedPizza.ingredients">
+      {{ingredient.name}}
+    </span>
+  </div>
+
+
+</div>
